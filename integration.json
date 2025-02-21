@@ -1,36 +1,63 @@
 {
-  "name": "IT Asset Lookup",
-  "description": "Query IT asset details directly in Telex. Example: `/assetlookup LAPTOP123`",
-  "author": "Idris Abdurrahman",
-  "version": "1.0.0",
-  "type": "output",
-  "commands": [
-    {
-      "name": "assetlookup",
-      "description": "Look up asset details in IT inventory.",
-      "parameters": [
-        {
-          "name": "asset_id",
-          "description": "Enter the hostname or service tag of the asset.",
-          "type": "text",
-          "required": true
-        }
-      ]
-    }
-  ],
-  "settings": [
-    {
-      "label": "Google Sheets API Key",
-      "type": "text",
-      "description": "Enter your Google Sheets API key.",
-      "required": true
+  "data": {
+    "date": {
+      "created_at": "2025-02-21",
+      "updated_at": "2025-02-21"
     },
-    {
-      "label": "Google Sheet ID",
-      "type": "text",
-      "description": "Enter the ID of the Google Sheet containing asset data.",
-      "required": true
-    }
-  ],
-  "target_url": "https://your-api-url.com/lookup"
+    "descriptions": {
+      "app_description": "Fetch IT asset details from Google Sheets and send them to a Telex channel.",
+      "app_logo": "https://your-logo-url.com/logo.png",
+      "app_name": "IT Asset Management",
+      "app_url": "https://your-integration-url.com",
+      "background_color": "#4A90E2"
+    },
+    "integration_category": "IT Service Management",
+    "integration_type": "output",
+    "is_active": false,
+    "key_features": [
+      "Query IT asset details via Telex",
+      "Integrates with Google Sheets API",
+      "Supports real-time asset lookups",
+      "Secure authentication with API key"
+    ],
+    "permissions": {
+      "it_admin": {
+        "always_online": true,
+        "display_name": "IT Asset Manager"
+      }
+    },
+    "settings": [
+      {
+        "label": "Google Sheets API Key",
+        "type": "text",
+        "description": "API Key for accessing Google Sheets.",
+        "required": true,
+        "default": ""
+      },
+      {
+        "label": "Sheet ID",
+        "type": "text",
+        "description": "The Google Sheet ID containing asset data.",
+        "required": true,
+        "default": ""
+      },
+      {
+        "label": "Asset Lookup Column",
+        "type": "text",
+        "description": "Column name where asset queries should be matched.",
+        "required": true,
+        "default": "Asset Tag"
+      },
+      {
+        "label": "Response Format",
+        "type": "dropdown",
+        "description": "Format for returning asset data.",
+        "required": true,
+        "default": "Detailed",
+        "options": ["Detailed", "Summary"]
+      }
+    ],
+    "tick_url": "https://your-api-url.com/telex/asset_lookup",
+    "target_url": "https://your-api-url.com/telex/asset_lookup"
+  }
 }
