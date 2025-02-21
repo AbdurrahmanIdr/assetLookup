@@ -1,0 +1,36 @@
+{
+  "name": "IT Asset Lookup",
+  "description": "Query IT asset details directly in Telex. Example: `/assetlookup LAPTOP123`",
+  "author": "Your Name",
+  "version": "1.0.0",
+  "type": "modifier",
+  "commands": [
+    {
+      "name": "assetlookup",
+      "description": "Look up asset details in IT inventory.",
+      "parameters": [
+        {
+          "name": "asset_id",
+          "description": "Enter the hostname or service tag of the asset.",
+          "type": "text",
+          "required": true
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "label": "Google Sheets API Key",
+      "type": "text",
+      "description": "Enter your Google Sheets API key.",
+      "required": true
+    },
+    {
+      "label": "Google Sheet ID",
+      "type": "text",
+      "description": "Enter the ID of the Google Sheet containing asset data.",
+      "required": true
+    }
+  ],
+  "target_url": "https://your-api-url.com/lookup"
+}
