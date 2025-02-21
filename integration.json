@@ -5,7 +5,7 @@
       "updated_at": "2025-02-21"
     },
     "descriptions": {
-      "app_description": "Fetch IT asset details from Google Sheets and send them to a Telex channel.",
+      "app_description": "Retrieve IT asset details from Google Sheets and send them to a Telex channel.",
       "app_logo": "https://your-logo-url.com/logo.png",
       "app_name": "IT Asset Management",
       "app_url": "https://your-integration-url.com",
@@ -13,12 +13,12 @@
     },
     "integration_category": "IT Service Management",
     "integration_type": "output",
-    "is_active": false,
+    "is_active": true,
     "key_features": [
-      "Query IT asset details via Telex",
-      "Integrates with Google Sheets API",
-      "Supports real-time asset lookups",
-      "Secure authentication with API key"
+      "Retrieve IT asset information from a Google Sheet using Telex queries.",
+      "Integrates with Google Sheets API for real-time asset lookups.",
+      "Supports detailed and summary response formats.",
+      "Secure API key authentication for controlled access."
     ],
     "permissions": {
       "it_admin": {
@@ -46,7 +46,7 @@
         "type": "text",
         "description": "Column name where asset queries should be matched.",
         "required": true,
-        "default": "Asset Tag"
+        "default": "Service Tag"
       },
       {
         "label": "Response Format",
@@ -57,7 +57,28 @@
         "options": ["Detailed", "Summary"]
       }
     ],
-    "tick_url": "https://your-api-url.com/telex/asset_lookup",
-    "target_url": "https://your-api-url.com/telex/asset_lookup"
+    "output": {
+      "webhook": {
+        "target_url": "https://your-api-url.com/api/telex/webhook",
+        "http_method": "POST",
+        "headers": {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer {{api_key}}"
+        },
+        "body": {
+          "status": "success",
+          "asset_info": {
+            "status": "{{status}}",
+            "previous_user": "{{previous_user}}",
+            "current_user": "{{current_user}}",
+            "hostname": "{{hostname}}",
+            "service_tag": "{{service_tag}}",
+            "laptop_model": "{{laptop_model}}",
+            "location": "{{location}}"
+          },
+          "return_url": "{{return_url}}"
+        }
+      }
+    }
   }
 }
