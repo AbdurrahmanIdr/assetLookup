@@ -1,9 +1,9 @@
 {
   "name": "IT Asset Lookup",
   "description": "Query IT asset details directly in Telex. Example: `/assetlookup LAPTOP123`",
-  "author": "Your Name",
+  "author": "Idris Abdurrahman",
   "version": "1.0.0",
-  "type": "modifier",
+  "type": "output",
   "commands": [
     {
       "name": "assetlookup",
