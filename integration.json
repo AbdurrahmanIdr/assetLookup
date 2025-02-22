@@ -1,5 +1,6 @@
 {
   "data": {
+    "target_url": "https://tal-ffsh.onrender.com/api/telex/webhook",
     "date": {
       "created_at": "2025-02-21",
       "updated_at": "2025-02-22"
@@ -61,14 +62,10 @@
         "description": "Format for returning asset data.",
         "required": true,
         "default": "Detailed",
-        "options": [
-          "Detailed",
-          "Summary"
-        ]
+        "options": ["Detailed", "Summary"]
       }
     ],
     "entry_point": {
-      "url": "https://tal-ffsh.onrender.com/api/telex/webhook",
       "method": "POST",
       "headers": {
         "Content-Type": "application/json"
