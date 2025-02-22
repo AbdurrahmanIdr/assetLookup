@@ -71,20 +71,11 @@
         "Content-Type": "application/json"
       },
       "payload": {
-        "service_tag": "{{service_tag}}"
+        "text": "/assetlookup {{service_tag}}"
       }
     },
     "output": {
-      "status": "ok",
-      "data": {
-        "Current User": "{{current_user}}",
-        "Hostname": "{{hostname}}",
-        "Laptop Model": "{{laptop_model}}",
-        "Location": "{{location}}",
-        "Previous User": "{{previous_user}}",
-        "Service Tag": "{{service_tag}}",
-        "Status": "{{status}}"
-      }
+      "text": "🔍 *Asset Lookup Result:*\n🔢 *Service Tag:* {{service_tag}}\n💻 *Hostname:* {{hostname}}\n📌 *Model:* {{laptop_model}}\n👤 *Current User:* {{current_user}}\n🔄 *Previous User:* {{previous_user}}\n📍 *Location:* {{location}}\n📋 *Status:* {{status}}"
     }
   }
 }
