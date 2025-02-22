@@ -61,15 +61,17 @@
         "description": "Format for returning asset data.",
         "required": true,
         "default": "Detailed",
-        "options": ["Detailed", "Summary"]
+        "options": [
+          "Detailed",
+          "Summary"
+        ]
       }
     ],
     "entry_point": {
       "url": "https://tal-ffsh.onrender.com/api/telex/webhook",
       "method": "POST",
       "headers": {
-        "Content-Type": "application/json",
-        "X-Telex-Signature": "{{TELEX_SIGNATURE}}"
+        "Content-Type": "application/json"
       },
       "payload": {
         "service_tag": "{{service_tag}}"
@@ -78,13 +80,13 @@
     "output": {
       "status": "ok",
       "data": {
-        "status": "{{status}}",
-        "previous_user": "{{previous_user}}",
-        "current_user": "{{current_user}}",
-        "hostname": "{{hostname}}",
-        "service_tag": "{{service_tag}}",
-        "laptop_model": "{{laptop_model}}",
-        "location": "{{location}}"
+        "Current User": "{{current_user}}",
+        "Hostname": "{{hostname}}",
+        "Laptop Model": "{{laptop_model}}",
+        "Location": "{{location}}",
+        "Previous User": "{{previous_user}}",
+        "Service Tag": "{{service_tag}}",
+        "Status": "{{status}}"
       }
     }
   }
