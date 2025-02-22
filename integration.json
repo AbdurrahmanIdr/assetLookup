@@ -5,20 +5,20 @@
       "updated_at": "2025-02-21"
     },
     "descriptions": {
-      "app_description": "Retrieve IT asset details from Google Sheets and send them to a Telex channel.",
-      "app_logo": "https://your-logo-url.com/logo.png",
+      "app_description": "Retrieve IT asset details from Google Sheets based on a Service Tag query.",
+      "app_logo": "https://asset-lookup.vercel.app/logo.png",
       "app_name": "IT Asset Management",
-      "app_url": "https://your-integration-url.com",
+      "app_url": "https://asset-lookup.vercel.app",
       "background_color": "#4A90E2"
     },
     "integration_category": "IT Service Management",
-    "integration_type": "output",
+    "integration_type": "modifier",
     "is_active": true,
     "key_features": [
       "Retrieve IT asset information from a Google Sheet using Telex queries.",
       "Integrates with Google Sheets API for real-time asset lookups.",
       "Supports detailed and summary response formats.",
-      "Secure API key authentication for controlled access."
+      "Secure authentication using service account credentials."
     ],
     "permissions": {
       "it_admin": {
@@ -28,9 +28,9 @@
     },
     "settings": [
       {
-        "label": "Google Sheets API Key",
-        "type": "text",
-        "description": "API Key for accessing Google Sheets.",
+        "label": "Google Sheets Service Account Credentials",
+        "type": "textarea",
+        "description": "Paste the JSON credentials for your Google Sheets service account.",
         "required": true,
         "default": ""
       },
@@ -40,6 +40,13 @@
         "description": "The Google Sheet ID containing asset data.",
         "required": true,
         "default": ""
+      },
+      {
+        "label": "Sheet Name",
+        "type": "text",
+        "description": "The name of the sheet (worksheet) containing asset data.",
+        "required": true,
+        "default": "Sheet1"
       },
       {
         "label": "Asset Lookup Column",
@@ -57,27 +64,27 @@
         "options": ["Detailed", "Summary"]
       }
     ],
+    "entry_point": {
+      "url": "https://tal-ffsh.onrender.com/api/telex/webhook",
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json",
+        "X-Telex-Signature": "{{TELEX_SIGNATURE}}"
+      },
+      "payload": {
+        "service_tag": "{{service_tag}}"
+      }
+    },
     "output": {
-      "webhook": {
-        "target_url": "https://your-api-url.com/api/telex/webhook",
-        "http_method": "POST",
-        "headers": {
-          "Content-Type": "application/json",
-          "Authorization": "Bearer {{api_key}}"
-        },
-        "body": {
-          "status": "success",
-          "asset_info": {
-            "status": "{{status}}",
-            "previous_user": "{{previous_user}}",
-            "current_user": "{{current_user}}",
-            "hostname": "{{hostname}}",
-            "service_tag": "{{service_tag}}",
-            "laptop_model": "{{laptop_model}}",
-            "location": "{{location}}"
-          },
-          "return_url": "{{return_url}}"
-        }
+      "status": "ok",
+      "data": {
+        "status": "{{status}}",
+        "previous_user": "{{previous_user}}",
+        "current_user": "{{current_user}}",
+        "hostname": "{{hostname}}",
+        "service_tag": "{{service_tag}}",
+        "laptop_model": "{{laptop_model}}",
+        "location": "{{location}}"
       }
     }
   }
